@@ -24,16 +24,23 @@ def read_data(file_name):
         return data
 
 
-def selection_sort(list):
+def selection_sort(list, order = "ascending"):
     n = len(list)
     for i in range(n):
         min_idx = i
         for num_idx in range(i + 1, n):
-            if list[num_idx] < list[min_idx]:
-                min_idx = num_idx
+            if "ascending" in order:
+                if list[num_idx] < list[min_idx]:
+                    min_idx = num_idx
+            elif "descending" in order:
+                if list[num_idx] > list[min_idx]:
+                    min_idx = num_idx
         list[i], list[min_idx] =\
             list[min_idx], list[i]
     return list
+
+
+
 
 def main():
     pass
@@ -42,6 +49,6 @@ def main():
 if __name__ == '__main__':
     data = read_data("numbers.csv")
     print(data)
-    sorted_list = selection_sort(data["series_1"])
+    sorted_list = selection_sort(data["series_1"], "descending")
     print(sorted_list)
     main()
