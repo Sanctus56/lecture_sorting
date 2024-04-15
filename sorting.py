@@ -40,8 +40,23 @@ def selection_sort(list, order = "ascending"):
     return list
 
 
+def bubble_sort(list_numbers):
+    for i in range(len(list_numbers)):
+        for j in range(len(list_numbers) - i - 1):
+            if list_numbers[j] > list_numbers[j + 1]:
+                list_numbers[j], list_numbers[j + 1] = list_numbers[j + 1], list_numbers[j]
+    return list_numbers
 
 
+def insertion_sort(numbers):
+    for i in range(1, len(numbers)):
+        key_number = numbers[i]
+        j = i - 1
+        while j >= 0 and numbers[j] > key_number:
+            numbers[j + 1] = numbers[j]
+            j = j - 1
+        numbers[j + 1] = key_number
+    return numbers
 def main():
     pass
 
@@ -51,4 +66,8 @@ if __name__ == '__main__':
     print(data)
     sorted_list = selection_sort(data["series_1"], "descending")
     print(sorted_list)
+    sorted_bubble_list = bubble_sort(data["series_2"])
+    print(sorted_bubble_list)
+    sorted_insertion_list = insertion_sort(data["series_3"])
+    print(sorted_insertion_list)
     main()
